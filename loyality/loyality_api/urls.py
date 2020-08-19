@@ -67,11 +67,23 @@ def tran_detail_status(request, param, value):
             tran = TranDetail.objects.filter(status=value)
         elif param == 'category':
             tran = TranDetail.objects.filter(category=value)
+        elif param == 'reward':
+            tran = TranDetail.objects.filter()
         else:
             data = {"data" : "Invalid filter selected"}
             return JsonResponse(data=data, safe=False)
         tran_serializer = TranSerializer(tran, many=True)
-        data = {"data" : tran_serializer.data, "size": len(tran_serializer.data) }
+        records = tran_serializer.data
+        if param == 'reward':
+            rewards = []
+            total = 0
+            for rec in records:
+                rewards.append(rec['reward'])
+                total = total + int(rec['reward'])
+            records = rewards
+            data = {"data" : records, "rewards":total, "size": len(records) }
+        else:
+            data = {"data" : records, "size": len(records) }
 
         return JsonResponse(data=data, safe=False)
     except Exception as err: 
