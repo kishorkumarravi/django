@@ -76,7 +76,6 @@ def tran_detail_status(request, param, value):
             data = {"data" : "Invalid filter selected"}
             return JsonResponse(data=data, safe=False)
         
-        print(param, value)
         tran_serializer = TranSerializer(tran, many=True)
         records = tran_serializer.data
         if param == 'reward':
@@ -94,8 +93,6 @@ def tran_detail_status(request, param, value):
                 rec_month = tran_date[5:7]
                 if '/' in rec_month:
                     rec_month = tran_date[3:5]
-                print(tran_date)
-                print(rec_month)
                 month = month_util[value]
                 if month == rec_month:
                     month_arr.append(rec)
