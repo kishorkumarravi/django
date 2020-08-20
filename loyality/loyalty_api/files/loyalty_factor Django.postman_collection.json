@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "248d4a97-d0bc-4fdd-bcd1-2e4186747d49",
-		"name": "loyality_factor Django",
+		"name": "loyalty_factor Django",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -36,15 +36,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/about/",
+					"raw": "http://localhost:8000/about",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8000",
 					"path": [
-						"about",
-						""
+						"about"
 					]
 				}
 			},
@@ -282,6 +281,66 @@
 						"fetch",
 						"reward",
 						"all",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FetchAll Month",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Passw0rd@123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/kravi/Downloads/ZR-2391.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/fetch/month/Jan/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"fetch",
+						"month",
+						"Jan",
 						""
 					]
 				}
